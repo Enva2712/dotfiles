@@ -1,45 +1,122 @@
-[ "$(whoami)" != "root" ] && (
-	echo "This program will install configurations for the following programs:"
-	echo "Urxvt, Vim, Tmux, I3, ZSH"
-	echo "Upgrading to root"
-	exec sudo -- "$0" "$@"
-)
+#!/bin/sh
 
+##### Important directories and usage text #####
 DIR=$(dirname "$0")
+LINK_DIR="$DIR/link"
+OTHER_DIR="$LINK_DIR/other"
+USAGE="Usage: install.sh [OPTION]\nOPTIONS\n\t-r, --remove\n\t\tRemove existing dotfiles before symlinking\n\t-b, --backup\n\t\tSuffix existing dotfiles with '.backup' before symlinking\n\t-p, --prompt\n\t\tPrompt whether or not to remove existing dotfile on a per-file basis"
 
 
-##### COPY DOTFILES TO PROPER LOCATION #####
-echo "Copying dotfiles"
-cp $DIR/vimrc ~/.vimrc;
-cp $DIR/tmux.conf ~/.tmux.conf;
-cp $DIR/zshrc ~/.zshrc
-cp $DIR/i3conf ~/.i3/config
-cp $DIR/Xdefaults ~/.Xdefaults
+function err() {
+	printf "\r\033[0;31mError: \033[0m$1\n"
+}
 
-##### CONFIGURE VIM #####
-cd ~/.vim
-echo "Adding vim directories"
-mkdir backup
-mkdir swap
-mkdir undo
-mkdir -p pack/start
-cd pack/start
 
-echo "Cloning vim plugins from github"
-git clone https://github.com/w0rp/ale.git
-git clone https://github.com/vim-scripts/Arduino-syntax-file
-git clone https://github.com/gitgutter/Vim.git
-git clone https://github.com/othree/html5-syntax.vim.git
-git clone https://github.com/cohama/lexima.vim.git
-git clone https://github.com/matze/vim-move.git
-git clone git://github.com/digitaltoad/vim-pug.git
-git clone https://github.com/tpope/vim-repeat.git
-git clone https://github.com/terryma/vim-smooth-scroll.git
+##### Check if user supplied arguments and exit if none present #####
+if [ $# -eq 0 ]; then
+	err "No option specified"
+	echo -e $USAGE
+	exit
+fi
 
-##### FINISHING COMMANDS #####
-echo "Setting default shell to zsh"
-chsh -s $(which zsh)
-echo "Updating packages"
-pacman -Syu
+##### Parse command line arguments #####
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+case $1 in
+	-r|--replace)
+		printf "Dotfiles that are already present will be deleted. Are you sure you want to continue? (y/N): "
+		read input
+		echo
+		if [ "$input" == "y" ] || [ "$input" == "Y" ]; then
+			replace="true"
+		else
+			echo "'Y' was not entered; exiting"
+			exit
+		fi
+		shift
+	;;
+	-b|--backup)
+		echo "Dotfiles that are already present will be suffixed with '.backup'."
+		backup="true"
+		shift
+	;;
+	-p|--prompt)
+		echo "You will be prompted what to do if a dotfile already exists."
+		shift
+	;;
+	-h|--help)
+		echo -e $USAGE
+		exit
+	;;
+	*)
+		err "Improper option specified"
+		echo -e $USAGE
+		exit
+	;;
+esac
+done
+set -- "${POSITIONAL[@]}"
 
-cd $DIR
+
+##### Find out where to install a specific dotfile based on filename #####
+function get_dest() {
+	local loc=$1
+	local ext="${loc##*.}" name="$(basename ${loc%.*})"
+	if [ "$ext" == "link" ]; then
+ 		echo "$HOME/.$(basename "${loc%.*}")"
+	elif [ "$ext" == "other" ]; then
+		echo "$($OTHER_DIR/$name)"
+	fi
+	return
+}
+
+##### Create symbolic link for a file #####
+function set_link() {
+	local loc=$1
+	if [ $# -eq 1 ]; then
+		local dest=$(get_dest $loc)
+	elif [ $# -eq 2 ]; then
+		local dest=$2
+	fi
+
+	echo "Linking $loc to $dest"
+
+	if [ -f $dest ]; then
+		if [ "$replace" == "true" ]; then
+			ln -f $loc $dest
+		elif [ "$backup" == "true" ]; then
+			ln -S '.backup' $loc $dest
+		else
+			ln -i $loc $dest
+		fi
+	else
+		ln $loc $dest
+	fi
+
+	return
+}
+
+
+##### Itterate over all files under link dir and attempt to set up symbolic links #####
+function link_all() {
+	echo "Creating symbolic links for dotfiles within HOME directory..."
+	for loc in $(find "$LINK_DIR" -name "*.link"); do
+		set_link "$loc"
+	done
+	echo "Creating symbolic links for dotfiles residing outside of HOME directory..."
+	for loc in $(find "$LINK_DIR" -name "*.other"); do
+		set_link "$loc"
+	done
+}
+
+
+link_all
+
+
+# Possible future functionality: git clone into specific directory; ex:
+# Clone the following into .vim/bundle for pathogen
+# https://github.com/w0rp/ale.git
+# https://github.com/gitgutter/Vim.git
+# https://github.com/cohama/lexima.vim.git
+# https://github.com/matze/vim-move.git
+# https://github.com/tpope/vim-repeat.git

@@ -1,0 +1,11 @@
+URxvt*font: xft:Iosevka:size=12:antialias=true:hinting=true
+URxvt*boldFont: xft:Iosevka:size=12:antialias=true:hinting=true
+URxvt*italicFont: xft:Iosevka:style=Oblique:size=12:antialias=true:hinting=true
+URxvt*boldItalicFont: xft:Iosevka:style=Bold Oblique:size=12:antialias=true:hinting=true
+URxvt*iso14755: False
+URxvt*iso14755_52: False
+*foreground: #4286f4
+*background: #444444
+*scrollBar: false
+*internalBorder: 20
+*saveLines:0
