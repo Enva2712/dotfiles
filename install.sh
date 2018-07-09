@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ##### Important directories and usage text #####
 DIR=$(dirname "$0")
@@ -7,8 +7,8 @@ OTHER_DIR="$LINK_DIR/other"
 USAGE="Usage: install.sh [OPTION]\nOPTIONS\n\t-r, --remove\n\t\tRemove existing dotfiles before symlinking\n\t-b, --backup\n\t\tSuffix existing dotfiles with '.backup' before symlinking\n\t-p, --prompt\n\t\tPrompt whether or not to remove existing dotfile on a per-file basis"
 
 
-function err() {
-	printf "\r\033[0;31mError: \033[0m$1\n"
+err () {
+	printf "\r\033[0;31mError: \033[0m$1\n";
 }
 
 
@@ -20,8 +20,6 @@ if [ $# -eq 0 ]; then
 fi
 
 ##### Parse command line arguments #####
-POSITIONAL=()
-while [[ $# -gt 0 ]]; do
 case $1 in
 	-r|--replace)
 		printf "Dotfiles that are already present will be deleted. Are you sure you want to continue? (y/N): "
@@ -33,16 +31,13 @@ case $1 in
 			echo "'Y' was not entered; exiting"
 			exit
 		fi
-		shift
 	;;
 	-b|--backup)
 		echo "Dotfiles that are already present will be suffixed with '.backup'."
 		backup="true"
-		shift
 	;;
 	-p|--prompt)
 		echo "You will be prompted what to do if a dotfile already exists."
-		shift
 	;;
 	-h|--help)
 		echo -e $USAGE
@@ -54,12 +49,10 @@ case $1 in
 		exit
 	;;
 esac
-done
-set -- "${POSITIONAL[@]}"
 
 
 ##### Find out where to install a specific dotfile based on filename #####
-function get_dest() {
+function get_dest {
 	local loc=$1
 	local ext="${loc##*.}" name="$(basename ${loc%.*})"
 	if [ "$ext" == "link" ]; then
@@ -71,7 +64,7 @@ function get_dest() {
 }
 
 ##### Create symbolic link for a file #####
-function set_link() {
+function set_link {
 	local loc=$1
 	if [ $# -eq 1 ]; then
 		local dest=$(get_dest $loc)
@@ -98,7 +91,7 @@ function set_link() {
 
 
 ##### Itterate over all files under link dir and attempt to set up symbolic links #####
-function link_all() {
+function link_all {
 	echo "Creating symbolic links for dotfiles within HOME directory..."
 	for loc in $(find "$LINK_DIR" -name "*.link"); do
 		set_link "$loc"
