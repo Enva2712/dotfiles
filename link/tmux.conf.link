@@ -1,5 +1,3 @@
-new-session -n $HOST
-
 bind r source-file ~/.tmux.conf; display-message " Config sourced!"
 
 unbind C-b
