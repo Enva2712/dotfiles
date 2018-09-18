@@ -7,7 +7,7 @@ let g:netrw_liststyle = 3
 let g:ale_fixers = {'javascript': ['eslint'],'go': ['go vet']}
 
 syntax on
-filetype plugin on
+filetype plugin indent on
 set autoindent
 set number
 set ruler
