@@ -8,7 +8,7 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 exec --no-startup-id compton -b
-exec --no-startup-id "sleep 1 && feh --bg-fill '/home/enva2712/wallpaper.png' &"
+exec --no-startup-id "sleep 1 && feh --bg-fill '/home/enva2712/Pictures/wallpaper.png' &"
 # exec --no-startup-id "sleep 3 && hsetroot -solid #444444"
 exec --no-startup-id "setxkbmap -option ctrl:nocaps &"
 # exec --no-startup-id "export PATH=$PATH:~/code/dbs/mongo/bin"
