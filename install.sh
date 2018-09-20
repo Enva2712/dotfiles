@@ -22,7 +22,7 @@ fi
 ##### Parse command line arguments #####
 case $1 in
 	-r|--replace)
-		printf "Dotfiles that are already present will be deleted. Are you sure you want to continue? (y/N): "
+		printf "Dotfiles that are already present will be overwritten. Are you sure you want to continue? (y/N): "
 		read input
 		echo
 		if [ "$input" == "y" ] || [ "$input" == "Y" ]; then
@@ -104,12 +104,3 @@ function link_all {
 
 
 link_all
-
-
-# Possible future functionality: git clone into specific directory; ex:
-# Clone the following into .vim/bundle for pathogen
-# https://github.com/w0rp/ale.git
-# https://github.com/gitgutter/Vim.git
-# https://github.com/cohama/lexima.vim.git
-# https://github.com/matze/vim-move.git
-# https://github.com/tpope/vim-repeat.git
