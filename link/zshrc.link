@@ -4,9 +4,12 @@ alias ls="ls --color=yes"
 alias tmux="tmux -u attach"
 alias cb="xclip -i -selection clipboard"
 alias cdc="cd \"\$(xclip -o -selection clipboard)\""
+
 export PS1="%{[38;5;200m%}%1/%{[0m%} $ "
 export GOPATH="$HOME/code/go"
-export PATH="$GOPATH/bin:$PATH:$HOME/code/scripts:/usr/local/go/bin:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/go/bin:$HOME/.deno/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/code/bin:$GOPATH/bin"
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
