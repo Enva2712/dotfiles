@@ -133,7 +133,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-bindsym $mod+Shift+r exec --no-startup-id "~/code/scripts/i3ref"
+bindsym $mod+Shift+r exec --no-startup-id "zsh -c '/home/enva2712/.local/bin/i3ref'"
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
@@ -177,7 +177,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id "/home/enva2712/code/scripts/lock -- scrot"
+bindsym $mod+9 exec --no-startup-id "zsh -c '/home/enva2712/.local/bin/lock -- scrot'"
 
 # Autostart applications
 ## adjustment of i3bar battery reading (only run at the very first login):
@@ -192,7 +192,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 7.834 -locker "notify-send 'Locking in 10 seconds'"
-exec --no-startup-id xautolock -time 8 -notify 10 -notifier "notify-send 'locking in 10 seconds'" -locker "/home/enva2712/code/scripts/lock -- scrot"
+exec --no-startup-id xautolock -time 8 -notify 10 -notifier "notify-send 'locking in 10 seconds'" -locker "/home/enva2712/.local/bin/lock -- scrot"
 exec_always --no-startup-id fix_xcursor
 
 exec_always "polybar main &"
