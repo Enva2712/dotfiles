@@ -191,8 +191,7 @@ exec --no-startup-id clipit
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_green
-# exec --no-startup-id xautolock -time 7.834 -locker "notify-send 'Locking in 10 seconds'"
-exec --no-startup-id xautolock -time 8 -notify 10 -notifier "notify-send 'locking in 10 seconds'" -locker "/home/enva2712/.local/bin/lock -- scrot"
+exec_always --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send 'locking in 15 seconds'\" -locker 'zsh -c /home/enva2712/.local/bin/lock -- scrot'
 exec_always --no-startup-id fix_xcursor
 
 exec_always "polybar main &"
