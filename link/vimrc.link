@@ -9,6 +9,7 @@ let g:ale_fixers = { 'javascript': ['eslint'], 'go': ['go vet'], 'typescript': [
 syntax on
 filetype plugin indent on
 set autoindent
+set smartindent
 set number
 set ruler
 set relativenumber
