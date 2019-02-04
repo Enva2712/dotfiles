@@ -7,5 +7,5 @@ URxvt*iso14755_52: False
 *foreground: #4286f4
 *background: #444444
 *scrollBar: false
-*internalBorder: 20
+*internalBorder: 10
 *saveLines:0
