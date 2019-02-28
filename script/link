@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+### Globals
+cd $(dirname $0)/..
+DIR=$(pwd -P)
+COLLECTIONS=$DIR/collections
+SCRIPT=$DIR/script
+
+
+
+### Functions
+error (){
+	printf "\r\e[38;0;31m➤ \033[0m$*\n";
+}
+
+success (){
+	printf "\r\e[38;0;32m➤ \033[0m$*\n";
+}
+
+warn (){
+	printf "\r\e[48;0;33m➤ \033[0m$*\n";
+}
+
+user (){
+	printf "\r\e[48;0;34m➤ \033[0m$*\n";
+}
+
+helptext (){
+	echo "Halp me!"
+}
+
+containing_dir (){
+	printf "%q\n" $(basename $(dirname $1))
+}
+
+link_files (){
+	# link_files ["SOURCE:DESTINATION"...]
+	for file in "$@"; do
+		while IFS=":" read -r source dest; do
+			# short_source="(collections/$(containing_dir $source)/.links)"
+			short_source="$(basename $dest) (collections/$(containing_dir $source)/$(basename $source))"
+			if [ "$FORCE" = "1" ]; then
+				success "Removing $dest and linking $short_source to $dest"
+				rm $dest
+			elif [ ! -e "$dest" ]; then
+				success "Linking $short_source to $dest"
+			else
+				warn "Skipping $short_source: $dest already exists"
+				continue
+			fi
+
+			ln -s $source $dest
+		done <<< "$file"
+	done
+}
+
+
+
+### Parse arguments
+OPTIND=1
+
+while getopts "hfa" o; do case $o in
+	h) helptext && exit 0 ;; # TODO: Write help text
+	f) FORCE=1 ;;
+	a) ALL=1 ;;
+esac done
+
+shift $((OPTIND-1))
+[ "${1:-}" = "--" ] && shift
+
+
+
+# Exit if no collections specified
+if [ ! "$ALL" = "1" ] && [ $# -eq 0 ]; then
+	error "No collections provided"
+	helptext
+	exit 1
+fi
+
+### Prompt user for [-f]
+if [ "$FORCE" = "1" ]; then
+	read -p "Dotfiles that are already present will be overwritten. Are you sure you want to continue? (y/N): " force_confirm
+	[[ ! $force_confirm =~ [yY](es)* ]] && user "Cancelling" && exit 1
+fi
+
+
+
+### Find installers for user supplied collections
+if [ $# -ne 0 ]; then
+	for collection in "$@"; do
+		if [ -r "$COLLECTIONS/$collection/.links" ]; then
+			INSTALLERS="$INSTALLERS,$COLLECTIONS/$collection/.links"
+		else
+			error "Collection $collection: installer not found in $COLLECTIONS/$collection/.links"
+			exit 1
+		fi
+	done
+else
+### Find installers for all collections
+	for collection in $COLLECTIONS/*/.links; do
+		[ -r $collection ] &&
+		INSTALLERS="$INSTALLERS,$collection"
+	done
+fi
+
+
+
+### Source links file
+for links_file in ${INSTALLERS//,/ }; do
+	if [ -r $links_file ]; then
+		user "Installing collection $(containing_dir ${links_file})"
+		. $links_file
+	fi
+done
