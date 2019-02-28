@@ -1,0 +1,54 @@
+let mapleader = ","
+
+filetype plugin on
+set numberwidth=4
+set showcmd
+set incsearch
+set sidescroll=1
+set sidescrolloff=200
+set scrolloff=3
+set laststatus=2
+set splitbelow
+set splitright
+set timeoutlen=100 ttimeoutlen=0
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+set t_Co=256
+
+colorscheme spacegray
+
+" Navigate splits with CTRL-[h,j,k,l]
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" Remap to scroll a file with CTRL-[u,i]
+nnoremap <C-u> <C-e>
+nnoremap <C-i> <C-y>
+nnoremap <C-F> :Vexplore<CR>
+nnoremap p "+]p
+nnoremap P "+]P
+nnoremap y "+y
+nnoremap d "+d
+nnoremap c "+c
+vnoremap p "+]p
+vnoremap P "+]P
+vnoremap y "+y
+vnoremap d "+d
+vnoremap c "+c
+
+au FileType * call mode#Detect()
+
+let &t_SI = "\<Esc>[5 q"
+let &t_SR = "\<Esc>[3 q"
+let &t_EI = "\<Esc>[1 q"
+
+let g:netrw_banner = 0
+let g:netrw_winsize = 30
+let g:netrw_liststyle = 3
+let g:ale_fixers = {'javascript': ['eslint'],'go': ['go vet']}
+let g:ale_completion_enabled = 1
+
+packloadall
+silent! helptags ALL
