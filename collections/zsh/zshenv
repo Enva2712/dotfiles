@@ -1,0 +1,7 @@
+export ZDOTDIR="$HOME/.config/zsh"
+
+if [ -d "$ZDOTDIR/env.d" ]; then
+	for script in $ZDOTDIR/env.d/**/*.(zsh|bash|sh); do
+		[ -r "$script" ] && . $script;
+	done
+fi
