@@ -39,17 +39,19 @@ link_files (){
 		while IFS=":" read -r source dest; do
 			# short_source="(collections/$(containing_dir $source)/.links)"
 			short_source="$(basename $dest) (collections/$(containing_dir $source)/$(basename $source))"
-			if [ "$FORCE" = "1" ]; then
-				success "Removing $dest and linking $short_source to $dest"
-				rm -f $dest
-			elif [ ! -e "$dest" ]; then
+			ln_options=("-s")
+			if [ ! -e "$dest" ]; then
 				success "Linking $short_source to $dest"
+			elif [ "$FORCE" = "1" ]; then
+				success "Removing $dest and linking $short_source to $dest"
+				ln_options+=('-fn')
 			else
 				warn "Skipping $short_source: $dest already exists"
 				continue
 			fi
 
-			ln -s $source $dest
+			ln_options+=("$source" "$dest")
+			ln ${ln_options[@]}
 		done <<< "$file"
 	done
 }
