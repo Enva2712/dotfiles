@@ -41,7 +41,7 @@ link_files (){
 			short_source="$(basename $dest) (collections/$(containing_dir $source)/$(basename $source))"
 			if [ "$FORCE" = "1" ]; then
 				success "Removing $dest and linking $short_source to $dest"
-				rm $dest
+				rm -f $dest
 			elif [ ! -e "$dest" ]; then
 				success "Linking $short_source to $dest"
 			else
