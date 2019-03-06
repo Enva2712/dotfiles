@@ -1,1 +1,1 @@
-[ "$TMUX" = "" ] && tmux new -A -s workspace && exit 0
+[ "$TMUX" = "" ] && tmux new -A -s Workspace
