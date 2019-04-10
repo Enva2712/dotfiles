@@ -17,40 +17,28 @@ set undodir=~/.vim/undo//
 set t_Co=256
 
 syntax on
-colorscheme spacegray
-hi Normal        ctermbg=238  ctermfg=250    guibg=#242424  guifg=#B3B8C4  cterm=NONE      gui=NONE
-hi Comment       ctermbg=NONE ctermfg=61     guibg=NONE     guifg=#515F6A  cterm=NONE      gui=NONE
-" hi Comment       ctermbg=NONE ctermfg=61     guibg=NONE     guifg=#515F6A  cterm=italic    gui=italic
+colorscheme wal
 
-" Navigate splits with CTRL-[h,j,k,l]
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-" Remap to scroll a file with CTRL-[u,i]
-nnoremap <C-u> <C-e>
-nnoremap <C-i> <C-y>
-nnoremap <C-F> :Vexplore<CR>
-nnoremap p "+]p
-nnoremap P "+]P
-nnoremap y "+y
-nnoremap d "+d
-nnoremap c "+c
-vnoremap p "+]p
-vnoremap P "+]P
-vnoremap y "+y
-vnoremap d "+d
-vnoremap c "+c
+" Use system clipboard
+nn p "+]p
+nn P "+]P
+nn y "+y
+nn Y "+Y
+nn d "+d
+nn D "+D
+nn c "+c
+nn C "+C
+vn p "+]p
+vn P "+]P
+vn y "+y
+vn Y "+Y
+vn d "+d
+vn D "+D
+vn c "+c
+vn C "+C
 
 au FileType * call mode#Detect()
 
-let &t_SI = "\<Esc>[5 q"
-let &t_SR = "\<Esc>[3 q"
-let &t_EI = "\<Esc>[1 q"
-
-let g:netrw_banner = 0
-let g:netrw_winsize = 30
-let g:netrw_liststyle = 3
 let g:ale_fixers = {'javascript': ['eslint'],'go': ['go vet']}
 let g:ale_completion_enabled = 1
 
