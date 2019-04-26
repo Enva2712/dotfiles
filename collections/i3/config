@@ -1,11 +1,11 @@
 # Set mod to <Super>
 set $mod Mod4
 
-font xft:Iosevka 10
+font xft:Iosevka 14
 
 floating_modifier $mod
 
-bindsym $mod+Return exec "urxvt -e tmux"
+bindsym $mod+Return exec "st"
 
 bindsym $mod+q kill
 
@@ -90,13 +90,11 @@ bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
 
 # Autostart applications
 # TODO: CONFIGURE dex
-exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker 'zsh -c /home/enva2712/.local/bin/lock -- scrot'
 exec --no-startup-id feh --bg-fill '/home/enva2712/.config/wallpaper.png'
-exec "polybar main &"
+exec "polybar main"
 exec --no-startup-id compton -b
 exec --no-startup-id start-pulseaudio-x11
-exec_always --no-startup-id fix_xcursor
 
 
 
@@ -110,12 +108,12 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 2
+new_window pixel 5
 new_float normal
 
 # set gaps
-gaps inner 15
-gaps outer 15
+gaps inner 16
+gaps outer 3
 
 # Don't draw gaps/borders if only win
 smart_gaps on
