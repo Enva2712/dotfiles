@@ -1,5 +1,5 @@
-# Set mod to <Super>
 set $mod Mod4
+<<<<<<< HEAD
 
 font xft:Iosevka 14
 
@@ -8,39 +8,13 @@ floating_modifier $mod
 bindsym $mod+Return exec "st"
 
 bindsym $mod+q kill
+=======
+set $Alt Mod1
+font xft:Iosevka 16
+floating_modifier $mod
 
-bindsym $mod+d exec dmenu_run -nf \#4286f4 -nb \#444444 -sb \#4286f4 -sf \#444444 -fn "Iosevka-12"
+>>>>>>> 2e2f2b0269adc8ef0cccc5f5884b9a3969160948
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Shift+h move left 30 px
-bindsym $mod+Shift+j move down 30 px
-bindsym $mod+Shift+k move up 30 px
-bindsym $mod+Shift+l move right 30 px
-bindsym $mod+Ctrl+j resize grow height 5 px or 5 ppt
-bindsym $mod+Ctrl+k resize shrink height 5 px or 5 ppt
-bindsym $mod+Ctrl+l resize grow width 5 px or 5 ppt
-bindsym $mod+Ctrl+h resize shrink width 5 px or 5 ppt
-
-bindsym $mod+g split b; exec notify-send -a i3 'Now tiling horizontally'
-bindsym $mod+v split v; exec notify-send -a i3 'Now tiling vertically'
-
-bindsym $mod+f fullscreen toggle
-
-bindsym $mod+space focus mode_toggle
-bindsym $mod+Shift+space floating toggle
-
-bindsym $mod+s sticky toggle
-
-workspace_auto_back_and_forth yes
-bindsym $mod+Tab workspace back_and_forth
-
-# Workspace names
-# to display names or symbols instead of plain workspace numbers you can use
-# something like: set $ws1 1:mail
-#                 set $ws2 2:
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -50,7 +24,21 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 
-# switch to workspace
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left 30 px
+bindsym $mod+Shift+j move down 30 px
+bindsym $mod+Shift+k move up 30 px
+bindsym $mod+Shift+l move right 30 px
+
+bindsym $mod+Ctrl+j resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+k resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+l resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+h resize shrink width 5 px or 5 ppt
+
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -60,7 +48,6 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 
-# Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
 bindsym $mod+Ctrl+2 move container to workspace $ws2
 bindsym $mod+Ctrl+3 move container to workspace $ws3
@@ -70,7 +57,6 @@ bindsym $mod+Ctrl+6 move container to workspace $ws6
 bindsym $mod+Ctrl+7 move container to workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8
 
-# Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
@@ -80,14 +66,8 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
 
-bindsym $mod+Shift+r exec --no-startup-id /home/enva2712/.local/bin/i3ref
-
-# Lock screen
-bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
-
+<<<<<<< HEAD
 # Autostart applications
 # TODO: CONFIGURE dex
 exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker 'zsh -c /home/enva2712/.local/bin/lock -- scrot'
@@ -95,19 +75,43 @@ exec --no-startup-id feh --bg-fill '/home/enva2712/.config/wallpaper.png'
 exec "polybar main"
 exec --no-startup-id compton -b
 exec --no-startup-id start-pulseaudio-x11
+=======
+exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker '/home/enva2712/.local/bin/lock -- scrot'
+exec --no-startup-id wal -i /home/enva2712/.config/wallpaper
+exec --no-startup-id compton -b
+exec --no-startup-id start-pulseaudio-x11
+exec_always /home/enva2712/.local/bin/start-polybar
+>>>>>>> 2e2f2b0269adc8ef0cccc5f5884b9a3969160948
 
 
+set_from_resource $bg i3wm.color0
+set_from_resource $fg i3wm.color7
+set_from_resource $urgent i3wm.color1
+# class                 border  backgr. text indic.    child_border
+client.focused          $fg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $urgent $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
 
-# Theme colors
-# class                 border  backgr. text    indic.  child_border
-client.focused          #4250f4 #4250f4 #4250f4 #4250f4
-client.focused_inactive #4250f4 #434745 #16A085 #454948
-client.unfocused        #888888 #434745 #16A085 #454948
-client.urgent           #CB4B16 #FDF6E3 #16A085 #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 
+bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
+bindsym $mod+d exec dmenu_run -nf "$fg" -nb "$bg" -sb "$fg" -sf "$bg" -fn "Iosevka-14"
+bindsym $mod+r exec --no-startup-id /home/enva2712/.local/bin/i3ref
+bindsym $mod+Return exec "st -e tmux new -A -s Workspace"
+bindsym $mod+Shift+Return exec "/home/enva2712/.local/bin/tmux_session_picker"
+bindsym $mod+$Alt+Return exec "st"
+bindsym $mod+q kill
+bindsym $mod+g split h; exec notify-send -a i3 'Tiling horizontally'
+bindsym $mod+v split v; exec notify-send -a i3 'Tiling vertically'
+bindsym $mod+f fullscreen toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+s sticky toggle
+workspace_auto_back_and_forth yes
+bindsym $mod+Tab workspace back_and_forth
 
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 5
 new_float normal
 
@@ -115,6 +119,11 @@ new_float normal
 gaps inner 16
 gaps outer 3
 
-# Don't draw gaps/borders if only win
+for_window [urgent="latest"] focus
+
+gaps inner 30
 smart_gaps on
 smart_borders on
+
+
+# vim:ft=i3config
