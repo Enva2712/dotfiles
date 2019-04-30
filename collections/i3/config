@@ -1,19 +1,8 @@
 set $mod Mod4
-<<<<<<< HEAD
-
-font xft:Iosevka 14
-
-floating_modifier $mod
-
-bindsym $mod+Return exec "st"
-
-bindsym $mod+q kill
-=======
 set $Alt Mod1
-font xft:Iosevka 16
 floating_modifier $mod
+font xft:Iosevka 16
 
->>>>>>> 2e2f2b0269adc8ef0cccc5f5884b9a3969160948
 
 set $ws1 1
 set $ws2 2
@@ -67,21 +56,13 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 
-<<<<<<< HEAD
 # Autostart applications
 # TODO: CONFIGURE dex
-exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker 'zsh -c /home/enva2712/.local/bin/lock -- scrot'
-exec --no-startup-id feh --bg-fill '/home/enva2712/.config/wallpaper.png'
-exec "polybar main"
-exec --no-startup-id compton -b
-exec --no-startup-id start-pulseaudio-x11
-=======
-exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker '/home/enva2712/.local/bin/lock -- scrot'
 exec --no-startup-id wal -i /home/enva2712/.config/wallpaper
+exec polybar main
 exec --no-startup-id compton -b
 exec --no-startup-id start-pulseaudio-x11
-exec_always /home/enva2712/.local/bin/start-polybar
->>>>>>> 2e2f2b0269adc8ef0cccc5f5884b9a3969160948
+exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker '/home/enva2712/.local/bin/lock -- scrot'
 
 
 set_from_resource $bg i3wm.color0
