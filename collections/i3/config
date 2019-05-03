@@ -75,12 +75,13 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
 
-bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
 bindsym $mod+d exec dmenu_run -nf "$fg" -nb "$bg" -sb "$fg" -sf "$bg" -fn "Iosevka-14"
-bindsym $mod+r exec --no-startup-id /home/enva2712/.local/bin/i3ref
-bindsym $mod+Return exec "st -e tmux new -A -s Workspace"
 bindsym $mod+Shift+Return exec "/home/enva2712/.local/bin/tmux_session_picker"
+bindsym $mod+m exec "st -e ncmpcpp"
+bindsym $mod+Return exec "st -e tmux new -A -s Workspace"
 bindsym $mod+$Alt+Return exec "st"
+bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
+bindsym $mod+r exec --no-startup-id /home/enva2712/.local/bin/i3ref
 bindsym $mod+q kill
 bindsym $mod+g split h; exec notify-send -a i3 'Tiling horizontally'
 bindsym $mod+v split v; exec notify-send -a i3 'Tiling vertically'

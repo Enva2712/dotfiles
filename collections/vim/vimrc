@@ -40,7 +40,6 @@ vn C "+C
 au FileType * call mode#Detect()
 
 let g:ale_fixers = {'javascript': ['eslint'],'go': ['go vet']}
-let g:ale_completion_enabled = 1
 
 packloadall
 silent! helptags ALL
