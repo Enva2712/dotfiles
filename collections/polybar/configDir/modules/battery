@@ -1,0 +1,10 @@
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 99
+poll-interval = 5
+time-format = %H:%M
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+label-charging = %percentage%% ― %time% until full
+label-discharging = %percentage%% ― %time% until empty

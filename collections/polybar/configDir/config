@@ -1,0 +1,29 @@
+[colors]
+background = ${xrdb:color0}
+foreground = ${xrdb:color7}
+alert = ${xrdb:color1}
+
+
+[bar/main]
+include-file = /home/enva2712/.config/polybar/bars/laptop
+
+
+[module/i3]
+include-file = /home/enva2712/.config/polybar/modules/i3
+
+[module/date]
+include-file = /home/enva2712/.config/polybar/modules/date
+
+[module/battery]
+include-file = /home/enva2712/.config/polybar/modules/battery
+
+[module/wired]
+include-file = /home/enva2712/.config/polybar/modules/wired
+
+[module/wireless]
+include-file = /home/enva2712/.config/polybar/modules/wireless
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
