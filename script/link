@@ -44,6 +44,7 @@ link_files (){
 				success "Linking $short_source to $dest"
 			elif [ "$FORCE" = "1" ]; then
 				success "Removing $dest and linking $short_source to $dest"
+				[ -d "$dest" ] && rm -rf $dest
 				ln_options+=('-fn')
 			else
 				warn "Skipping $short_source: $dest already exists"
