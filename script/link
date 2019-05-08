@@ -26,7 +26,7 @@ user (){
 }
 
 helptext (){
-	echo "Halp me!"
+	printf "Usage: script/link [-f] [COLLECTION... || -a]\nInstall dotfile collections.\nExample: script/link vim zsh\n\nOPTIONS:\n\t-h\n\t\tShow this help text.\n\t-f\n\t\tForce linking by removing existing files.\n\t-a\n\t\tInstall all collections.\nCOLLECTION:\n\tA subdirectory of collections/ containing a .links file\n"
 }
 
 containing_dir (){
