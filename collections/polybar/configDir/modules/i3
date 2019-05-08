@@ -17,5 +17,3 @@ label-unfocused-padding = 2
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
-
-; vim:ft=ini

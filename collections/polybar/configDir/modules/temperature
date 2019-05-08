@@ -1,0 +1,5 @@
+type = custom/script
+interval = 60
+label = %output%
+exec = ~/.local/bin/temp
+click-left = xdg-open https://openweathermap.org/city/5245387
