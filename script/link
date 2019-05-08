@@ -51,6 +51,7 @@ link_files (){
 				continue
 			fi
 
+			mkdir -p "$(dirname $dest)"
 			ln_options+=("$source" "$dest")
 			ln ${ln_options[@]}
 		done <<< "$file"
