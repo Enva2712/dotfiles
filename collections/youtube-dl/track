@@ -1,0 +1,8 @@
+--extract-audio
+--embed-thumbnail
+--no-playlist
+--audio-format "mp3"
+
+--output "%(title)s.%(ext)s"
+
+# vim:ft=fish
