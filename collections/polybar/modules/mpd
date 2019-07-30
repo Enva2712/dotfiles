@@ -1,0 +1,7 @@
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+
+format-online = <toggle>  <label-time> <label-song>
+icon-play = ▶
+icon-pause = ||
