@@ -67,13 +67,14 @@ exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low
 
 set_from_resource $bg i3wm.color0
 set_from_resource $fg i3wm.color7
-set_from_resource $urgent i3wm.color1
-# class                 border  backgr. text indic.    child_border
-client.focused          $fg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $urgent $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
+set_from_resource $focused i3wm.color1
+set_from_resource $urgent i3wm.color2
+# class                 border		backgr. text	indic.	child_border
+client.focused          $fg	$bg	$fg	$bg	$bg
+client.focused_inactive $fg	$bg	$fg	$bg	$bg
+client.unfocused        $bg	$bg	$fg	$bg	$bg
+client.urgent           $urgent	$bg	$fg	$bg	$bg
+client.placeholder      $bg	$bg	$fg	$bg	$bg
 client.background       $bg
 
 
