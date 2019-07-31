@@ -3,7 +3,7 @@ HISTSIZE=50
 SAVEHIST=100
 bindkey -v
 
-export PS1="%{%F{1}%}%1/%{%f%} ➜  "
+export PS1="%{%F{1}%}%1/%{%f%} $ "
 
 [ -n "$(tput colors)" ] && [ -r "$HOME/.cache/wal/sequences" ] && cat $HOME/.cache/wal/sequences
 
