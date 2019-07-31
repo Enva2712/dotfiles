@@ -12,8 +12,11 @@ set laststatus=2
 set splitbelow
 set splitright
 set timeoutlen=100 ttimeoutlen=0
+set backup
 set backupdir=~/.vim/backup//
+set swapfile
 set directory=~/.vim/swap//
+set undofile
 set undodir=~/.vim/undo//
 set t_Co=256
 
@@ -37,8 +40,6 @@ vn d "+d
 vn D "+D
 vn c "+c
 vn C "+C
-
-au FileType * call mode#Detect()
 
 let g:ale_fixers = {'javascript': ['eslint'],'go': ['go vet']}
 
