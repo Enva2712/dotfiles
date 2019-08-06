@@ -1,6 +1,7 @@
 let mapleader = ","
 
 filetype plugin on
+set viminfo+=n~/.vim/viminfo
 set numberwidth=4
 set modeline
 set showcmd
