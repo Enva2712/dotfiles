@@ -42,7 +42,5 @@ vn D "+D
 vn c "+c
 vn C "+C
 
-let g:ale_fixers = {'javascript': ['eslint'],'go': ['go vet']}
-
 packloadall
 silent! helptags ALL
