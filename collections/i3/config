@@ -95,19 +95,10 @@ bindsym $mod+s sticky toggle
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
 
-new_window pixel 5
-new_float normal
-
-# set gaps
-gaps inner 16
-gaps outer 3
+default_border normal 5
+default_floating_border normal 5
 
 for_window [urgent="latest"] focus
-
-gaps inner 30
-smart_gaps on
-smart_borders on
-
 
 
 bar {
