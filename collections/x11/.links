@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 link_files \
-	"$(dirname $links_file)/xsession:$HOME/.xsession"
+	"$(dirname $links_file)/xsession:$HOME/.xsession" \
+	"$(dirname $links_file)/Xmodmap:$HOME/.Xmodmap"
