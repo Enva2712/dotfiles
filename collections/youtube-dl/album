@@ -2,6 +2,7 @@
 --embed-thumbnail
 --yes-playlist
 --audio-format "mp3"
+--add-metadata
 
 --output "%(playlist)s/%(playlist_index)02d - %(title)s.%(ext)s"
 
