@@ -3,7 +3,6 @@ set $Alt Mod1
 floating_modifier $mod
 font pango:Iosevka 12
 
-
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -62,20 +61,21 @@ exec --no-startup-id compton -b
 exec --no-startup-id xbanish
 exec --no-startup-id xcape -e "Control_L=Escape"
 exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker '/home/enva2712/.local/bin/lock -- scrot'
+exec --no-startup-id xautolock -time 8 -notify 15 -notifier \"notify-send -u low -a Xautolock 'locking in 15 seconds'\" -locker /home/enva2712/.local/bin/lock
 
 
-set_from_resource $bg i3wm.color0
-set_from_resource $fg i3wm.color7
-set_from_resource $focused i3wm.color1
-set_from_resource $urgent i3wm.color2
-# class                 border		backgr. text	indic.	child_border
-client.focused          $focused	$bg	$fg	$bg	$bg
-client.focused_inactive $focused	$bg	$fg	$bg	$bg
-client.unfocused        $bg		$bg	$fg	$bg	$bg
-client.urgent           $urgent		$urgent	$fg	$bg	$bg
-client.placeholder      		$bg	$fg		$bg
-client.background       $bg
+# Colors
+set_from_resource $bg i3wm.color0 #000000
+set_from_resource $fg i3wm.color7 #eeeeee
+set_from_resource $focused i3wm.color1 #00ff00
+set_from_resource $urgent i3wm.color2 #ff0000
+# border background text indicator child_border
+client.focused $focused $bg $fg $bg $bg
+client.focused_inactive $focused $bg $fg $bg $bg
+client.unfocused $bg $bg $fg $bg $bg
+client.urgent $urgent $urgent $fg $bg $bg
+client.placeholder $bg $fg $bg #000000 #000000
+client.background $bg
 
 
 bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
@@ -84,6 +84,7 @@ bindsym $mod+r exec --no-startup-id /home/enva2712/.local/bin/i3ref
 bindsym $mod+Return exec "st -e tmux_start new -A -s Workspace"
 bindsym $mod+Shift+Return exec "/home/enva2712/.local/bin/tmux_session_picker"
 bindsym $mod+$Alt+Return exec "st"
+bindsym $mod+n exec "st -e nnn"
 bindsym $mod+m exec "st -e ncmpcpp"
 bindsym $mod+q kill
 bindsym $mod+g split h; exec notify-send -a i3 'Tiling horizontally'
@@ -100,9 +101,22 @@ default_floating_border normal 5
 
 for_window [urgent="latest"] focus
 
-
 bar {
 	status_command i3status
+	position bottom
+	font pango:Iosevka 16
+
+	colors {
+		background $bg
+		statusline $fg
+		separator $fg
+
+		# border background text
+		active_workspace $fg $focused $fg
+		focused_workspace $focused $focused $fg
+		inactive_workspace $fg $bg $fg
+		urgent_workspace $fg $urgent $fg
+	}
 }
 
 
