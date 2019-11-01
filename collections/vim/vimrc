@@ -12,7 +12,7 @@ set scrolloff=3
 set laststatus=2
 set splitbelow
 set splitright
-set timeoutlen=100 ttimeoutlen=0
+set notimeout
 set backup
 set backupdir=~/.vim/backup//
 set swapfile
