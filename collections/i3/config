@@ -1,7 +1,7 @@
 set $mod Mod4
 set $Alt Mod1
 floating_modifier $mod
-font xft:Iosevka 16
+font pango:Iosevka 12
 
 
 set $ws1 1
