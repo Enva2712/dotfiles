@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ### Globals
-cd $(dirname $0)/..
+cd "$(dirname $0)/.." || exit 1
 DIR=$(pwd -P)
 COLLECTIONS=$DIR/collections
 SCRIPT=$DIR/script
