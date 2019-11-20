@@ -71,7 +71,7 @@ set_from_resource $focused i3wm.color1 #00ff00
 set_from_resource $urgent i3wm.color2 #ff0000
 # border background text indicator child_border
 client.focused $focused $bg $fg $bg $bg
-client.focused_inactive $focused $bg $fg $bg $bg
+client.focused_inactive $bg $bg $fg $bg $bg
 client.unfocused $bg $bg $fg $bg $bg
 client.urgent $urgent $urgent $fg $bg $bg
 client.placeholder $bg $fg $bg #000000 #000000
@@ -104,7 +104,6 @@ for_window [urgent="latest"] focus
 bar {
 	status_command i3status
 	position bottom
-	font pango:Iosevka 16
 
 	colors {
 		background $bg
