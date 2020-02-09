@@ -114,9 +114,9 @@ bar {
 		separator $fg
 
 		# border background text
-		active_workspace $fg $focused $fg
-		focused_workspace $focused $focused $fg
-		inactive_workspace $fg $bg $fg
+		focused_workspace $focused $focused $bg
+		active_workspace $fg $bg $fg
+		inactive_workspace $bg $bg $fg
 		urgent_workspace $fg $urgent $fg
 	}
 }
