@@ -4,23 +4,16 @@ function Text()
 	set breakindent
 	set spell
 
+	set number
+	set relativenumber
 	set ruler
 	set autoindent
 	set smartindent
-
-	set nonumber
-	set norelativenumber
-
-	no j gj
-	no k gk
-	no A g$a
-	no I g0i
 endfunction
 
 function Code()
 	set number
 	set relativenumber
-
 	set ruler
 	set autoindent
 	set smartindent
