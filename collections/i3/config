@@ -78,6 +78,9 @@ client.placeholder $bg $fg $bg #000000 #000000
 client.background $bg
 
 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
 bindsym $mod+d exec dmenu_run
 bindsym $mod+r exec --no-startup-id /home/enva2712/.local/bin/i3ref
@@ -111,9 +114,9 @@ bar {
 		separator $fg
 
 		# border background text
-		active_workspace $fg $focused $fg
-		focused_workspace $focused $focused $fg
-		inactive_workspace $fg $bg $fg
+		focused_workspace $focused $focused $bg
+		active_workspace $fg $bg $fg
+		inactive_workspace $bg $bg $fg
 		urgent_workspace $fg $urgent $fg
 	}
 }
