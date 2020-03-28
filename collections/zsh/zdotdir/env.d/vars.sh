@@ -14,4 +14,5 @@ $HOME/.deno/bin:\
 $HOME/.local/bin:\
 $GOROOT/bin:\
 $GOPATH/bin:\
-$HOME/.cargo/bin"
+$HOME/.cargo/bin:\
+$HOME/.pulumi/bin"
