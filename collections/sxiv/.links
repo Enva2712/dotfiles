@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+link_files \
+	"$(dirname $links_file)/key-handler:$HOME/.config/sxiv/exec/key-handler"

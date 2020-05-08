@@ -1,0 +1,31 @@
+#!/bin/sh
+
+wallpaper() {
+	read path
+	set_wallpaper "$path" &>/dev/null
+}
+
+save() {
+	while read path; do
+		cp "$path" "$(xdg-user-dir PICTURES)"
+	done
+}
+
+delete() {
+	while read path; do
+		rm "$path"
+	done
+}
+
+gimp() {
+	while read path; do
+		setsid gimp "$path" >/dev/null 2>&1 &
+	done
+}
+
+case "$1" in
+	"w") wallpaper;;
+	"s") save;;
+	"d") delete;;
+	"g") gimp;;
+esac
