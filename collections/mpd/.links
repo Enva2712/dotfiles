@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+mkdir -p "$HOME/.var/mpd/playlists"
+
+link_files \
+	"$(dirname $links_file)/mpd.conf:$HOME/.config/mpd/mpd.conf" \
