@@ -2,4 +2,4 @@
 
 link_files \
 	"$(dirname $links_file)/config:$HOME/.config/ncmpcpp/config"
-	"$(dirname $links_file)/bindings:$HOME/.config/ncmpcpp/config"
+	"$(dirname $links_file)/bindings:$HOME/.config/ncmpcpp/bindings"
