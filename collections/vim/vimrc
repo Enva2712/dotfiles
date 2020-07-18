@@ -24,6 +24,8 @@ set t_Co=256
 syntax on
 colorscheme wal
 
+set omnifunc=ale#completion#OmniFunc
+
 " Use system clipboard
 nn p "+]p
 nn P "+]P
