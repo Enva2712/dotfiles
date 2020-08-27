@@ -26,6 +26,10 @@ colorscheme wal
 
 set omnifunc=ale#completion#OmniFunc
 
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+let g:limelight_conceal_ctermfg = 235
+
 " Use system clipboard
 nn p "+]p
 nn P "+]P
