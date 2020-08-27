@@ -84,9 +84,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym $mod+9 exec --no-startup-id /home/enva2712/.local/bin/lock -- scrot
 bindsym $mod+d exec dmenu_run
 bindsym $mod+r exec --no-startup-id /home/enva2712/.local/bin/i3ref
-bindsym $mod+Return exec "st -e tmux_start new -A -s Workspace"
+bindsym $mod+Return exec "st"
 bindsym $mod+Shift+Return exec "/home/enva2712/.local/bin/tmux_session_picker"
-bindsym $mod+$Alt+Return exec "st"
 bindsym $mod+n exec "st -e nnn"
 bindsym $mod+m exec "st -e ncmpcpp"
 bindsym $mod+q kill
