@@ -1,7 +1,6 @@
 export CODE_DIR="$HOME/code"
 export CONFIG_DIR="$HOME/.config"
 export PORT=8080
-export GOROOT="/usr/local/go"
 export GOPATH="$CODE_DIR/go"
 
 export EDITOR="vim"
