@@ -38,6 +38,8 @@ let b:ale_fixers = {
 \	'typescript': ['prettier'],
 \	'typescriptreact': ['prettier'],
 \	'javascript': ['prettier'],
+\	'html': ['prettier'],
+\	'markdown': ['prettier'],
 \	'haskell': ['brittany'],
 \}
 set omnifunc=ale#completion#OmniFunc
