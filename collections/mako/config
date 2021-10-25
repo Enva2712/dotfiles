@@ -1,0 +1,6 @@
+font=Iosevka 14
+format=<b>%a: %s</b>\n%b
+layer=overlay
+
+[grouped]
+format=<b>%a (%g): %s</b>\n%b
