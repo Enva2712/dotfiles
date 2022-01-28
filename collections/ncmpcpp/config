@@ -13,3 +13,5 @@ visualizer_type = "spectrum"
 external_editor = /usr/bin/vim
 use_console_editor = yes
 mouse_support = no
+
+song_window_title_format = "%a - %t - ncmpcpp"
