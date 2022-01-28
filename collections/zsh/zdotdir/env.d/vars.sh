@@ -5,7 +5,7 @@ export GOPATH="$CODE_DIR/go"
 
 export EDITOR="vim"
 export VISUAL="vim"
-export BROWSER="surf"
+export BROWSER="firefox"
 
 export PATH="\
 $PATH:\
@@ -15,3 +15,7 @@ $GOROOT/bin:\
 $GOPATH/bin:\
 $HOME/.cargo/bin:\
 $HOME/.pulumi/bin"
+
+export MOZ_ENABLE_WAYLAND=1
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
