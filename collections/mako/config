@@ -1,6 +1,7 @@
 font=Iosevka 14
 format=<b>%a: %s</b>\n%b
 layer=overlay
+default-timeout=15000
 
 [grouped]
 format=<b>%a (%g): %s</b>\n%b
