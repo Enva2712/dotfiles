@@ -5,7 +5,7 @@ set $down j
 set $up k
 set $right l
 set $term st
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu menu | xargs swaymsg exec --
 
 # TODO: learn more:
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -152,7 +152,7 @@ bar {
     font Iosevka 14
 
     # TODO: Grab script from other laptop
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    status_command while statusbar.sh; do sleep 1; done
 
     colors {
         statusline $foreground
