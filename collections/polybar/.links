@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-link_files "$(dirname $links_file):$HOME/.config/polybar"

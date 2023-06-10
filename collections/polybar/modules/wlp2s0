@@ -1,3 +1,0 @@
-type = internal/network
-interface = wlp2s0
-label-connected = %essid% %local_ip%

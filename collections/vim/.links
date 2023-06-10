@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-vimdir="$HOME/.vim"
-mkdir -p "$vimdir/backup" "$vimdir/swap" "$vimdir/undo" "$vimdir/pack/config"
-
-link_files \
-	"$(dirname $links_file)/vimrc:$vimdir/vimrc" \
-	"$(dirname $links_file)/config:$vimdir/pack/config/start"

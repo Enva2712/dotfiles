@@ -1,0 +1,10 @@
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.deno/bin"
+export GOPATH="$HOME/code/go"
+export MOZ_ENABLE_WAYLAND=1
+export EDITOR=vim VISUAL=vim
+
+. ~/.bashrc
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+  exec sway
+fi

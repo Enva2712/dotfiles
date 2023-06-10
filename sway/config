@@ -1,0 +1,128 @@
+## UI
+gaps inner 16
+default_border pixel 1
+blur enable
+blur_xray enable
+blur_radius 10
+corner_radius 12
+exec swww init
+exec swww img ~/.config/wallpaper
+
+# exec waybar
+bar {
+    position top
+
+    status_command statusbar
+    font Iosevka 10
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
+
+## Interactions
+
+input "type:keyboard" {
+    xkb_options ctrl:nocaps
+}
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+    accel_profile adaptive
+    middle_emulation enabled
+}
+
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    pointer_accel -.1
+    scroll_factor .4
+}
+
+bindsym Mod4+Return exec foot
+bindsym Mod4+q kill
+# bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
+bindsym Mod4+d exec tofi-run | xargs swaymsg exec --
+floating_modifier Mod4 normal
+bindsym Mod4+Shift+c reload
+bindsym Mod4+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86MonBrightnessDown exec brightnessctl set '5%-'
+bindsym XF86MonBrightnessUp exec brightnessctl set '5%+'
+bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1
+bindsym Shift+XF86MonBrightnessUp exec brightnessctl set '100%'
+bindsym Mod4+p exec grim
+bindsym Mod4+Shift+p exec grim -g "$(slurp)" - | swappy -f -
+
+bindsym Mod4+v splitt
+bindsym Mod4+f fullscreen
+bindsym Mod4+Shift+space floating toggle
+bindsym Mod4+space focus mode_toggle
+bindsym Mod4+s sticky toggle
+bindsym Mod4+Shift+minus move scratchpad
+bindsym Mod4+minus scratchpad show
+workspace_auto_back_and_forth yes
+bindsym Mod4+Tab workspace back_and_forth
+
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l focus right
+
+bindsym Mod4+Ctrl+h resize shrink width 8
+bindsym Mod4+Ctrl+j resize grow height 8
+bindsym Mod4+Ctrl+k resize shrink height 8
+bindsym Mod4+Ctrl+l resize grow width 8
+
+bindsym Mod4+Shift+h move left
+bindsym Mod4+Shift+j move down
+bindsym Mod4+Shift+k move up
+bindsym Mod4+Shift+l move right
+
+bindsym Mod4+1 workspace number 1
+bindsym Mod4+2 workspace number 2
+bindsym Mod4+3 workspace number 3
+bindsym Mod4+4 workspace number 4
+bindsym Mod4+5 workspace number 5
+bindsym Mod4+6 workspace number 6
+bindsym Mod4+7 workspace number 7
+bindsym Mod4+8 workspace number 8
+bindsym Mod4+9 workspace number 9
+bindsym Mod4+0 workspace number 10
+
+bindsym Mod4+Ctrl+1 move container to workspace number 1
+bindsym Mod4+Ctrl+2 move container to workspace number 2
+bindsym Mod4+Ctrl+3 move container to workspace number 3
+bindsym Mod4+Ctrl+4 move container to workspace number 4
+bindsym Mod4+Ctrl+5 move container to workspace number 5
+bindsym Mod4+Ctrl+6 move container to workspace number 6
+bindsym Mod4+Ctrl+7 move container to workspace number 7
+bindsym Mod4+Ctrl+8 move container to workspace number 8
+bindsym Mod4+Ctrl+9 move container to workspace number 9
+bindsym Mod4+Ctrl+0 move container to workspace number 10
+
+bindsym Mod4+Shift+1 move container to workspace number 1; workspace number 1
+bindsym Mod4+Shift+2 move container to workspace number 2; workspace number 2
+bindsym Mod4+Shift+3 move container to workspace number 3; workspace number 3
+bindsym Mod4+Shift+4 move container to workspace number 4; workspace number 4
+bindsym Mod4+Shift+5 move container to workspace number 5; workspace number 5
+bindsym Mod4+Shift+6 move container to workspace number 6; workspace number 6
+bindsym Mod4+Shift+7 move container to workspace number 7; workspace number 7
+bindsym Mod4+Shift+8 move container to workspace number 8; workspace number 8
+bindsym Mod4+Shift+9 move container to workspace number 9; workspace number 9
+bindsym Mod4+Shift+0 move container to workspace number 10; workspace number 10
+
+## Misc
+
+exec swayidle -w \
+    timeout 300 'swaylock -i ~/.config/wallpaper -f -c 000000' \
+    timeout 330 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -i ~/.config/wallpaper -f -c 000000'
+
+include /etc/sway/config.d/*

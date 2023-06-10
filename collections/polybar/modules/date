@@ -1,9 +1,0 @@
-type = internal/date
-interval = .5
-date = "%Y-%m-%d"
-date-alt =
-time = %H:%M:%S
-time-alt = %H:%M:%S
-label = %date% %time%
-
-; vim:ft=ini

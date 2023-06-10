@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-link_files \
-	"$(dirname $links_file)/tmux.conf:$HOME/.tmux.conf"

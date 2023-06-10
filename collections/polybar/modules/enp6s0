@@ -1,4 +1,0 @@
-type = internal/network
-interface = enp6s0
-label-connected = %local_ip%
-label-connected-underline = ${colors.foreground}

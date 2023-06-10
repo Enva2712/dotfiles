@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-confdir="$HOME/.config/youtube-dl"
-mkdir -p "$confdir"
-
-link_files \
-	"$(dirname $links_file)/config:$confdir/config" \
-	"$(dirname $links_file)/album:$confdir/album" \
-	"$(dirname $links_file)/track:$confdir/track"

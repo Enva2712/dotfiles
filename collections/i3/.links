@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-link_files \
-	"$(dirname $links_file)/config:$HOME/.config/i3/config"

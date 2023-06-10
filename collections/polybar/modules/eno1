@@ -1,3 +1,0 @@
-type = internal/network
-interface = eno1
-label-connected = ✓ %local_ip%

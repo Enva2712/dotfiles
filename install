@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function helptext() {
+	cat <<EOH
+Usage: $0 [OPTS]
+
+OPTS:
+	-f	Force overwrites
+	-h	Help
+EOH
+}
+
+FORCE=
+while getopts "hf" o; do case $o in
+	h) helptext; exit 0 ;;
+	f) FORCE=1 ;;
+	*);;
+esac done
+shift $((OPTIND-1))
+ORIGPWD="$PWD"
+
+function link() {
+	fromdir="$(dirname "$1")"
+	while read -r line; do
+		from="$fromdir/$(cut -d' ' -f1 <<<"$line")"
+		to="${line##* }"
+		if [ -z "$FORCE" ] && [ -e "$HOME/$to" ]; then
+			echo "error: ~/$to already exists"
+			echo "to overwrite existing files run with -f"
+			exit 0
+		fi
+		# shellcheck disable=SC2088
+		echo "~/$to <- $from"
+		mkdir -p "$(dirname "$HOME/$to")"
+		ln -fns "$(realpath "$from")" "$HOME/$to"
+	done <"$1"
+}
+
+find . -name loc | while read -r loc; do
+	link "$loc"
+done
+
+cd "$ORIGPWD"

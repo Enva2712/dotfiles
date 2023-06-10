@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-link_files \
-	"$(dirname $links_file)/zshenv:$HOME/.zshenv" \
-	"$(dirname $links_file)/zdotdir:$HOME/.config/zsh"

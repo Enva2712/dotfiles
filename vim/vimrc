@@ -1,0 +1,35 @@
+syntax on
+colorscheme gruvbox
+set tgc background=dark
+hi Normal ctermbg=NONE guibg=NONE
+let g:limelight_conceal_ctermfg = 'darkgray'
+let g:limelight_conceal_guifg = '#555555'
+auto! User GoyoEnter Limelight
+auto! User GoyoLeave Limelight!
+
+set mouse=a
+set nu rnu list lcs=eol:¬,tab:┊\ ,space:·
+set spr sb
+set nowrap
+
+set vif=~/.vim/vif
+set backup backupdir=~/.vim/bak/
+set backup backupdir=~/.vim/bak/ backupskip=/tmp/*,/private/*
+set swapfile directory=~/.vim/swp/
+set undofile undodir=~/.vim/undo/
+
+set omnifunc=ale#completion#OmniFunc
+let g:ale_shell = '/bin/sh'
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+
+let g:ale_linters = {
+\ 'typescript': ['deno'],
+\ 'typescriptreact': ['deno'],
+\ 'rust': ['analyzer', 'cargo'],
+\}
+let g:ale_fixers = {
+\ 'typescript': ['deno'],
+\ 'typescriptreact': ['deno'],
+\ 'rust': ['rustfmt'],
+\}
