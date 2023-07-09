@@ -1,12 +1,13 @@
+include "$HOME/.cache/wal/colors-sway"
+
 ## UI
 gaps inner 16
 default_border pixel 1
 blur enable
-blur_xray enable
 blur_radius 10
 corner_radius 12
 exec swww init
-exec swww img ~/.config/wallpaper
+exec swww img $wallpaper
 
 # exec waybar
 bar {
@@ -16,9 +17,10 @@ bar {
     font Iosevka 10
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        statusline $foreground
+        background $background
+        focused_workspace $color2 $color2 $foreground
+        inactive_workspace $color0 $background $foreground
     }
 }
 
@@ -43,7 +45,8 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 bindsym Mod4+Return exec foot
 bindsym Mod4+q kill
 # bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
-bindsym Mod4+d exec tofi-run | xargs swaymsg exec --
+# bindsym Mod4+d exec tofi-run | xargs swaymsg exec --
+bindsym Mod4+w exec sxiv -r $HOME/pics/wallpapers
 floating_modifier Mod4 normal
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'

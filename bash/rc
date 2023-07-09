@@ -1,4 +1,6 @@
-(cat ~/.cache/wal/sequences &)
+if [ -e ~/.cache/wal/sequences ]; then (cat ~/.cache/wal/sequences &); fi
+set -o vi
+
 alias ls='ls --color=auto -Fh'
 . /usr/share/nvm/init-nvm.sh
 alias youtube-dl-album='youtube-dl --config-location $HOME/.config/youtube-dl/album'

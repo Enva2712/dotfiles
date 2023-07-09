@@ -1,6 +1,6 @@
 syntax on
-colorscheme gruvbox
-set tgc background=dark
+colorscheme wal
+set background=dark
 hi Normal ctermbg=NONE guibg=NONE
 let g:limelight_conceal_ctermfg = 'darkgray'
 let g:limelight_conceal_guifg = '#555555'

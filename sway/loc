@@ -1,1 +1,3 @@
 config .config/sway/config
+idle .config/swayidle/config
+lock .config/swaylock/config

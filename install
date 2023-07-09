@@ -3,7 +3,7 @@ set -euo pipefail
 
 function helptext() {
 	cat <<EOH
-Usage: $0 [OPTS]
+Usage: $0 [OPTS] [DIR...]
 
 OPTS:
 	-f	Force overwrites
@@ -12,33 +12,38 @@ EOH
 }
 
 FORCE=
+SEARCH=()
+# FIXME
 while getopts "hf" o; do case $o in
 	h) helptext; exit 0 ;;
 	f) FORCE=1 ;;
-	*);;
+	*) SEARCH+=("$OPTARG");;
 esac done
 shift $((OPTIND-1))
-ORIGPWD="$PWD"
+SEARCH+=("$@")
 
-function link() {
-	fromdir="$(dirname "$1")"
+if [ $# -eq 0 ]; then
+	SEARCH=('.')
+fi
+
+find "${SEARCH[@]}" -name loc | while read -r loc; do
+	fromdir="$(dirname "$loc")"
 	while read -r line; do
 		from="$fromdir/$(cut -d' ' -f1 <<<"$line")"
 		to="${line##* }"
-		if [ -z "$FORCE" ] && [ -e "$HOME/$to" ]; then
-			echo "error: ~/$to already exists"
-			echo "to overwrite existing files run with -f"
-			exit 0
+		if [ -e "$HOME/$to" ]; then
+			if [ -z "$FORCE" ]; then
+				echo "error: ~/$to already exists" >&2
+				echo "to overwrite existing files run with -f" >&2
+				exit 1
+			else
+				# shellcheck disable=SC2115
+				rm -rf "$HOME/$to"
+			fi
 		fi
 		# shellcheck disable=SC2088
 		echo "~/$to <- $from"
 		mkdir -p "$(dirname "$HOME/$to")"
 		ln -fns "$(realpath "$from")" "$HOME/$to"
-	done <"$1"
-}
-
-find . -name loc | while read -r loc; do
-	link "$loc"
+	done <"$loc"
 done
-
-cd "$ORIGPWD"

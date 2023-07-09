@@ -2,7 +2,7 @@
 
 wallpaper() {
 	read path
-	set_wallpaper "$path" &>/dev/null
+	pape "$path" &>/dev/null
 }
 
 save() {
