@@ -1,31 +1,9 @@
-#!/bin/sh
-
-wallpaper() {
-	read path
-	pape "$path" &>/dev/null
-}
-
-save() {
-	while read path; do
-		cp "$path" "$(xdg-user-dir PICTURES)"
-	done
-}
-
-delete() {
-	while read path; do
-		rm "$path"
-	done
-}
-
-gimp() {
-	while read path; do
-		setsid gimp "$path" >/dev/null 2>&1 &
-	done
-}
+#!/usr/bin/env bash
+set -euo pipefail
 
 case "$1" in
-	"w") wallpaper;;
-	"s") save;;
-	"d") delete;;
-	"g") gimp;;
+	"w") read -r path && pape "$path" &>/dev/null;;
+	"s") while read -r path; do cp "$path" "$(xdg-user-dir PICTURES)"; done;;
+	"d") while read -r path; do rm "$path"; done;;
+	"g") while read -r path; do setsid gimp "$path" >/dev/null 2>&1 & done;;
 esac
