@@ -8,8 +8,8 @@ blur_radius 10
 corner_radius 12
 exec swww init
 exec swww img $wallpaper
+exec swayidle -w
 
-# exec waybar
 bar {
     position top
 
@@ -40,6 +40,12 @@ input "type:touchpad" {
 input "2:7:SynPS/2_Synaptics_TouchPad" {
     pointer_accel -.1
     scroll_factor .4
+}
+
+input "TPPS/2 ALPS TrackPoint" {
+    pointer_accel -.1
+    scroll_factor .5
+    accel_profile flat
 }
 
 bindsym Mod4+Return exec foot
@@ -120,9 +126,5 @@ bindsym Mod4+Shift+7 move container to workspace number 7; workspace number 7
 bindsym Mod4+Shift+8 move container to workspace number 8; workspace number 8
 bindsym Mod4+Shift+9 move container to workspace number 9; workspace number 9
 bindsym Mod4+Shift+0 move container to workspace number 10; workspace number 10
-
-## Misc
-
-exec swayidle -w
 
 include /etc/sway/config.d/*

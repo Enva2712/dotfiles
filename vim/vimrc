@@ -10,7 +10,7 @@ auto! User GoyoLeave Limelight!
 set mouse=a
 set nu rnu list lcs=eol:¬,tab:┊\ ,space:·
 set spr sb
-set nowrap
+set nowrap ai
 
 set vif=~/.vim/vif
 set backup backupdir=~/.vim/bak/
