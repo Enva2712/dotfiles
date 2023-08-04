@@ -14,7 +14,9 @@ bar {
     position top
 
     status_command statusbar
-    font Iosevka 10
+    font Iosevka 16
+    mode hide
+    height 40
 
     colors {
         statusline $foreground
@@ -43,16 +45,17 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 }
 
 input "TPPS/2 ALPS TrackPoint" {
-    pointer_accel -.1
-    scroll_factor .5
     accel_profile flat
+    calibration_matrix 0 .1 .1 .1 .1 1
+    scroll_factor .5
 }
 
-bindsym Mod4+Return exec foot
+bindsym Mod4+Return exec wezterm
 bindsym Mod4+q kill
 # bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
 # bindsym Mod4+d exec tofi-run | xargs swaymsg exec --
-bindsym Mod4+w exec sxiv -r $HOME/pics/wallpapers
+bindsym Mod4+w exec pape
+bindsym Mod4+Shift+w exec sxiv -r $HOME/pics/wallpapers
 floating_modifier Mod4 normal
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
