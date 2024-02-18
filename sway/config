@@ -52,7 +52,7 @@ input "TPPS/2 ALPS TrackPoint" {
 
 bindsym Mod4+Return exec wezterm
 bindsym Mod4+q kill
-# bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
+bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
 # bindsym Mod4+d exec tofi-run | xargs swaymsg exec --
 bindsym Mod4+w exec pape
 bindsym Mod4+Shift+w exec sxiv -r $HOME/pics/wallpapers
