@@ -1,0 +1,12 @@
+[user]
+	email = evanrusmisel@gmail.com
+	name = Evan Rusmisel
+	signingKey = 54EEE269E39BCC93E006AE35FA2488E6FE5D4C70
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+
+# vim:ft=gitconfig
