@@ -4,7 +4,7 @@ include "$HOME/.cache/wal/colors-sway"
 gaps inner 16
 default_border pixel 1
 blur enable
-blur_radius 10
+blur_radius 5
 corner_radius 12
 exec swww init
 exec swww img $wallpaper
