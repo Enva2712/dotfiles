@@ -87,15 +87,15 @@ bindsym Mod4+j focus down
 bindsym Mod4+k focus up
 bindsym Mod4+l focus right
 
-bindsym Mod4+Ctrl+h resize shrink width 8
-bindsym Mod4+Ctrl+j resize grow height 8
-bindsym Mod4+Ctrl+k resize shrink height 8
-bindsym Mod4+Ctrl+l resize grow width 8
+bindsym Mod4+Ctrl+h resize shrink width 128
+bindsym Mod4+Ctrl+j resize grow height 128
+bindsym Mod4+Ctrl+k resize shrink height 128
+bindsym Mod4+Ctrl+l resize grow width 128
 
-bindsym Mod4+Shift+h move left
-bindsym Mod4+Shift+j move down
-bindsym Mod4+Shift+k move up
-bindsym Mod4+Shift+l move right
+bindsym Mod4+Shift+h move left 128
+bindsym Mod4+Shift+j move down 128
+bindsym Mod4+Shift+k move up 128
+bindsym Mod4+Shift+l move right 128
 
 bindsym Mod4+1 workspace number 1
 bindsym Mod4+2 workspace number 2
