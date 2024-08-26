@@ -38,4 +38,5 @@ let g:ale_fixers = {
 "\ 'typescript': ['prettier'],
 "\ 'typescriptreact': ['prettier'],
 \ 'rust': ['rustfmt'],
+\ 'python': ['ruff_format'],
 \}

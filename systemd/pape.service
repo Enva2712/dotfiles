@@ -1,10 +1,6 @@
 [Unit]
 Description=random pape
-Wants=oldpape.timer
 
 [Service]
 Type=oneshot
 ExecStart=/home/enva2712/.local/bin/pape
-
-[Install]
-WantedBy=default.target
