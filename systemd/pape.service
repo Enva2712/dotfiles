@@ -1,0 +1,6 @@
+[Unit]
+Description=random pape
+
+[Service]
+Type=oneshot
+ExecStart=/home/enva2712/.local/bin/pape

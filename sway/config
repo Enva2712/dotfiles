@@ -4,7 +4,7 @@ include "$HOME/.cache/wal/colors-sway"
 gaps inner 16
 default_border pixel 1
 blur enable
-blur_radius 10
+blur_radius 5
 corner_radius 12
 exec swww init
 exec swww img $wallpaper
@@ -52,7 +52,7 @@ input "TPPS/2 ALPS TrackPoint" {
 
 bindsym Mod4+Return exec wezterm
 bindsym Mod4+q kill
-# bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
+bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
 # bindsym Mod4+d exec tofi-run | xargs swaymsg exec --
 bindsym Mod4+w exec pape
 bindsym Mod4+Shift+w exec sxiv -r $HOME/pics/wallpapers
@@ -87,15 +87,15 @@ bindsym Mod4+j focus down
 bindsym Mod4+k focus up
 bindsym Mod4+l focus right
 
-bindsym Mod4+Ctrl+h resize shrink width 8
-bindsym Mod4+Ctrl+j resize grow height 8
-bindsym Mod4+Ctrl+k resize shrink height 8
-bindsym Mod4+Ctrl+l resize grow width 8
+bindsym Mod4+Ctrl+h resize shrink width 128
+bindsym Mod4+Ctrl+j resize grow height 128
+bindsym Mod4+Ctrl+k resize shrink height 128
+bindsym Mod4+Ctrl+l resize grow width 128
 
-bindsym Mod4+Shift+h move left
-bindsym Mod4+Shift+j move down
-bindsym Mod4+Shift+k move up
-bindsym Mod4+Shift+l move right
+bindsym Mod4+Shift+h move left 128
+bindsym Mod4+Shift+j move down 128
+bindsym Mod4+Shift+k move up 128
+bindsym Mod4+Shift+l move right 128
 
 bindsym Mod4+1 workspace number 1
 bindsym Mod4+2 workspace number 2

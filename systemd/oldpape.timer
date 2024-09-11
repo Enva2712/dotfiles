@@ -1,0 +1,11 @@
+[Unit]
+Description=set pape
+Wants=oldpape.timer
+
+[Timer]
+Unit=pape.service
+OnCalendar=*:0/30
+Persistent=true
+
+[Install]
+WantedBy=default.target

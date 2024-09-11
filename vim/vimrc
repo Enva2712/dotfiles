@@ -1,3 +1,4 @@
+set encoding=utf8
 syntax on
 colorscheme wal
 set background=dark
@@ -9,11 +10,11 @@ auto! User GoyoLeave Limelight!
 
 set mouse=a
 set nu rnu list lcs=eol:¬,tab:┊\ ,space:·
+set nu rnu list
 set spr sb
 set nowrap ai
 
 set vif=~/.vim/vif
-set backup backupdir=~/.vim/bak/
 set backup backupdir=~/.vim/bak/ backupskip=/tmp/*,/private/*
 set swapfile directory=~/.vim/swp/
 set undofile undodir=~/.vim/undo/
@@ -26,12 +27,20 @@ let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \ 'typescript': ['deno'],
 \ 'typescriptreact': ['deno'],
+"\ 'typescript': ['tsserver', 'eslint'],
+"\ 'typescriptreact': ['tsserver', 'eslint'],
 \ 'rust': ['analyzer', 'cargo'],
+\ 'wgsl': ['wgsl_analyzer'],
 \}
 let g:ale_fixers = {
 \ 'typescript': ['deno'],
 \ 'typescriptreact': ['deno'],
+"\ 'typescript': ['prettier'],
+"\ 'typescriptreact': ['prettier'],
 \ 'rust': ['rustfmt'],
+\ 'python': ['ruff_format'],
+\ 'c': ['clang-format'],
+\ 'cpp': ['clang-format']
 \}
 
 let g:taggedtemplate#tagSyntaxMap = {
