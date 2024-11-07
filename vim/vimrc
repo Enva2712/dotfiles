@@ -42,3 +42,10 @@ let g:ale_fixers = {
 \ 'c': ['clang-format'],
 \ 'cpp': ['clang-format']
 \}
+
+let g:taggedtemplate#tagSyntaxMap = {
+\ "wgsl": "wgsl",
+\ "html": "html",
+\ "css":  "css"
+\}
+autocmd FileType javascript,javascriptreact,typescript,typescriptreact : call taggedtemplate#applySyntaxMap()
