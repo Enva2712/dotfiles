@@ -50,6 +50,11 @@ input "TPPS/2 ALPS TrackPoint" {
     scroll_factor .5
 }
 
+input "1386:20918:Wacom_Pen_and_multitouch_sensor_Pen" map_to_output "AU Optronics 0x583D Unknown"
+input "1386:20918:Wacom_Pen_and_multitouch_sensor_Finger" map_to_output "AU Optronics 0x583D Unknown"
+input "9580:109:HID_256c:006d_Pen" map_to_output "HAT Kamvas Pro 16 0x01010101"
+input "9580:109:HID_256c:006d_Pad" map_to_output "HAT Kamvas Pro 16 0x01010101"
+
 bindsym Mod4+Return exec wezterm
 bindsym Mod4+q kill
 bindsym Mod4+d exec dmenu_path | dmenu -l 10 -fn Iosevka -p run: | xargs swaymsg exec --
