@@ -1,2 +1,2 @@
-oldpape.timer .config/systemd/user/oldpape.timer
+pape.timer .config/systemd/user/pape.timer
 pape.service .config/systemd/user/pape.service
