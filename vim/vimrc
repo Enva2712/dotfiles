@@ -10,6 +10,11 @@ auto! User GoyoLeave Limelight!
 
 set mouse=a
 set nu rnu list lcs=eol:¬,tab:┊\ ,space:·
+" set number
+" set relativenumber
+" set ruler
+" set autoindent
+" set smartindent
 set nu rnu list
 set spr sb
 set nowrap ai
@@ -25,18 +30,18 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
 let g:ale_linters = {
-\ 'typescript': ['deno'],
-\ 'typescriptreact': ['deno'],
-"\ 'typescript': ['tsserver', 'eslint'],
-"\ 'typescriptreact': ['tsserver', 'eslint'],
+"\ 'typescript': ['deno'],
+"\ 'typescriptreact': ['deno'],
+\ 'typescript': ['tsserver', 'eslint'],
+\ 'typescriptreact': ['tsserver', 'eslint'],
 \ 'rust': ['analyzer', 'cargo'],
 \ 'wgsl': ['wgsl_analyzer'],
 \}
 let g:ale_fixers = {
-\ 'typescript': ['deno'],
-\ 'typescriptreact': ['deno'],
-"\ 'typescript': ['prettier'],
-"\ 'typescriptreact': ['prettier'],
+"\ 'typescript': ['deno'],
+"\ 'typescriptreact': ['deno'],
+\ 'typescript': ['prettier'],
+\ 'typescriptreact': ['prettier'],
 \ 'rust': ['rustfmt'],
 \ 'python': ['ruff_format'],
 \ 'c': ['clang-format'],
